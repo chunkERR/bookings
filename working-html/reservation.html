@@ -136,6 +136,10 @@ Right
 
 
     <script>
+
+
+let attention = Prompt();
+
       // Example starter JavaScript for disabling form submissions if there are invalid fields
 (() => {
   'use strict'
@@ -160,7 +164,8 @@ Right
       document.getElementById("colorButton").addEventListener("click", function() {
 
 // notify("This is my message", "success")
-notifyModal("title", "<em>hello,world</em>", "success", "My text for the button")
+// notifyModal("title", "<em>hello,world</em>", "success", "My text for the button")
+attention.success({msg: "Hello world."})
 })
 
       const elem = document.getElementById('reservation-dates');
@@ -183,6 +188,66 @@ function notifyModal(title, text, icon, confirmButtonText) {
   icon: icon,
   confirmButtonText: confirmButtonText
 })
+}
+
+
+function Prompt() {
+  let toast = function(c) {
+    const {
+msg = "",
+icon = "success",
+position = "top-end"
+    } = c;
+
+const Toast = Swal.mixin({
+  toast: true,
+  title: msg,
+  position: position,
+  icon: icon,
+  customClass: {
+    popup: 'colored-toast'
+  },
+  showConfirmButton: false,
+  timer: 1500,
+  timerProgressBar: true
+})
+ Toast.fire({})
+  }
+  let success = function(c) {
+  const {
+msg = "",
+title = "",
+footer = ""
+
+  } = c;
+    Swal.fire({
+  icon: 'success',
+  title: title,
+  text: msg,
+  footer: footer
+})  }
+  return {
+    toast: toast,
+    success: success,
+  }
+  let error = function(c) {
+  const {
+msg = "",
+title = "",
+footer = ""
+
+  } = c;
+    Swal.fire({
+  icon: 'error',
+  title: title,
+  text: msg,
+  footer: footer
+})  }
+  return {
+    toast: toast,
+    success: success,
+    error: error
+  }
 }
     </script>
 
