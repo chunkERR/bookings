@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
     <title>My nice page</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
     rel="stylesheet"
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
     crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.2/dist/css/datepicker-bs5.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.2/dist/css/datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
+
 
     <style>
       .my-footer {
@@ -19,6 +25,15 @@
         color: white;
         font-size: 80%;
       }
+
+
+      .redText {
+        color: red;
+      }
+
+      .notie-container {
+      box-shadow: none;
+    }
     </style>
 </head>
 <body>
@@ -56,43 +71,50 @@
         </div>
       </nav>
 
-    <div class="container">
 
 
 
+<div class="container">
 <div class="row">
   <div class="col-md-3"></div>
     <div class="col-md-6">
-        <h1 class="mt-5">Search for availability</p>
-    </div>
+        <h1 class="mt-5">Search for availability</h1>
 
-    <form action="/working-html/reservation.html" method="get">
+    <form action="/working-html/reservation.html" method="get" novalidate class="needs-validation">
 
     <div class="row">
 
       <div class="col">
-        <div class="mb-3">
-          <label for="StartDate" class="form-label">Starting date</label>
-          <input type="date" class="form-control" id="StartDate" name="start_date" aria-describedby="startDateHelp" required>
-          <div id="startDateHelp" class="form-text">Enter a starting date in the format of DD-MM-YYYY</div>
-        </div>
+
+        <div class="row" id="reservation-dates">
+          <div class="col-md-6">
+            <input required class="form-control" type="text" name="start" placeholder="Arrival">
       </div>
+      <div class="col-md-6">
+        <input required class="form-control" type="text" name="end" placeholder="Departure">  
+      </div>
+    </div>
 
-<div class="col">
-  <div class="mb-3">
-    <label for="EndDate" class="form-label">End date</label>
-    <input type="date" class="form-control" id="EndDate" name="end_date" aria-describedby="endDateHelp" required>
-    <div id="endDateHelp" class="form-text">Enter an end date in the format of DD-MM-YYYY</div>
   </div>
-</div>
 
 </div>
+
+<hr>
 
     <button type="submit" class="btn btn-primary">Book now</button>
   </form>
 
-
+  <div class="row">
+    <div class="col">
+      <p id="myParagraph">This is some text.</p>
+      <p>
+        <button id="colorButton" class="btn btn-outline-secondary">Click me</button>
+      </p>
     </div>
+  </div>
+</div>
+
+
     <div class="row my-footer">
       <div class="col">
 Left
@@ -108,5 +130,61 @@ Right
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.2/dist/js/datepicker-full.min.js"></script>
+    <script src="https://unpkg.com/notie"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+
+
+      document.getElementById("colorButton").addEventListener("click", function() {
+
+// notify("This is my message", "success")
+notifyModal("title", "<em>hello,world</em>", "success", "My text for the button")
+})
+
+      const elem = document.getElementById('reservation-dates');
+const rangepicker = new DateRangePicker(elem, {
+  // ...options
+  format: "dd-mm-yyyy"
+}); 
+
+function notify(msg, msgType) {
+  notie.alert({
+  type: msgType, // optional, default = 4, enum: [1, 2, 3, 4, 5, 'success', 'warning', 'error', 'info', 'neutral']
+  text: msg
+})
+}  
+
+function notifyModal(title, text, icon, confirmButtonText) {
+  Swal.fire({
+  title: title,
+  html: text,
+  icon: icon,
+  confirmButtonText: confirmButtonText
+})
+}
+    </script>
+
 </body>
 </html>
