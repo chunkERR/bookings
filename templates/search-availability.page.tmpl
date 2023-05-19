@@ -8,7 +8,7 @@
         <div class="col-md-6">
             <h1 class="mt-5">Search for availability</h1>
     
-        <form action="/working-html/reservation.html" method="get" novalidate class="needs-validation">
+        <form action="/search-availability" method="get" novalidate class="needs-validation">
     
         <div class="row">
     
@@ -29,18 +29,8 @@
     
     <hr>
     
-        <button type="submit" class="btn btn-primary">Book now</button>
+        <button type="submit" class="btn btn-primary">Search availability</button>
       </form>
-    
-      <div class="row">
-        <div class="col">
-          <p id="myParagraph">This is some text.</p>
-          <p>
-            <button id="colorButton" class="btn btn-outline-secondary">Click me</button>
-          </p>
-        </div>
-      </div>
-    </div>
     
 {{end}}    
 
@@ -48,7 +38,7 @@
 <script>
     const elem = document.getElementById('reservation-dates');
     const rangePicker = new DateRangePicker(elem, {
-        format: "yyyy-mm-dd",
+        format: "dd-mm-yyyy",
     });
 </script>
 {{end}}
