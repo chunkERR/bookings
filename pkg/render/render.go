@@ -2,6 +2,7 @@ package render
 
 import (
 	"bytes"
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -9,6 +10,7 @@ import (
 
 	"github.com/chunkERR/bookings/pkg/config"
 	"github.com/chunkERR/bookings/pkg/models"
+	"github.com/justinas/nosurf"
 )
 
 var app *config.AppConfig
@@ -18,11 +20,12 @@ func NewTemplates(a *config.AppConfig) {
 	app = a
 }
 
-func AddDefaultData(td *models.TemplateData) *models.TemplateData {
+func AddDefaultData(td *models.TemplateData, r *http.Request) *models.TemplateData {
+	td.CSRFToken = nosurf.Token(r)
 	return td
 }
 
-func RenderTemplate(w http.ResponseWriter, tmpl string, templateData *models.TemplateData) {
+func RenderTemplate(w http.ResponseWriter, r *http.Request, tmpl string, templateData *models.TemplateData) error {
 
 	var templatecache map[string]*template.Template
 
@@ -41,7 +44,7 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, templateData *models.Tem
 
 	buf := new(bytes.Buffer)
 
-	templateData = AddDefaultData(templateData)
+	templateData = AddDefaultData(templateData, r)
 
 	err := t.Execute(buf, templateData)
 	if err != nil {
@@ -51,8 +54,9 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, templateData *models.Tem
 	_, err = buf.WriteTo(w)
 	if err != nil {
 		log.Println(err)
+		fmt.Println("Error writing template to browser", err)
 	}
-
+return nil
 }
 
 func CreateTemplateCache() (map[string]*template.Template, error) {
