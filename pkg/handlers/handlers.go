@@ -84,26 +84,25 @@ func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte(fmt.Sprintf("start date is %s and the end date is %s", start, end)))
 }
 
-
 type jsonResponse struct {
-	OK bool `json:"ok"`
+	OK      bool   `json:"ok"`
 	Message string `json:"message"`
 }
+
 // AvailabilityJSON renders the search availability page
 func (m *Repository) AvailabilityJSON(w http.ResponseWriter, r *http.Request) {
-resp := jsonResponse {
-	OK: true,
-	Message: "available!",
-}
+	resp := jsonResponse{
+		OK:      true,
+		Message: "available!",
+	}
 
-out, err := json.MarshalIndent(resp, "", "    ")
-if err != nil {
-	log.Println(err)
-}
+	out, err := json.MarshalIndent(resp, "", "    ")
+	if err != nil {
+		log.Println(err)
+	}
 
-log.Println(string(out))
-w.Header().Set("Content-Type", "application/json")
-w.Write(out)
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(out)
 
 }
 
