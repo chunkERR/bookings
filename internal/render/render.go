@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"path/filepath"
 
-	"github.com/chunkERR/bookings/pkg/config"
-	"github.com/chunkERR/bookings/pkg/models"
+	"github.com/chunkERR/bookings/internal/config"
+	"github.com/chunkERR/bookings/internal/models"
 	"github.com/justinas/nosurf"
 )
 
@@ -56,7 +56,7 @@ func RenderTemplate(w http.ResponseWriter, r *http.Request, tmpl string, templat
 		log.Println(err)
 		fmt.Println("Error writing template to browser", err)
 	}
-return nil
+	return nil
 }
 
 func CreateTemplateCache() (map[string]*template.Template, error) {

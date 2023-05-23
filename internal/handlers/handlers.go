@@ -6,9 +6,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/chunkERR/bookings/pkg/config"
-	"github.com/chunkERR/bookings/pkg/models"
-	"github.com/chunkERR/bookings/pkg/render"
+	"github.com/chunkERR/bookings/internal/config"
+	"github.com/chunkERR/bookings/internal/models"
+	"github.com/chunkERR/bookings/internal/render"
 )
 
 // Repo is the repository used by the handlers
