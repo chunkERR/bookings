@@ -1,0 +1,22 @@
+mode: set
+github.com/chunkERR/bookings/internal/handlers/handlers.go:24.47,28.2 1 1
+github.com/chunkERR/bookings/internal/handlers/handlers.go:31.33,33.2 1 1
+github.com/chunkERR/bookings/internal/handlers/handlers.go:37.67,42.2 3 1
+github.com/chunkERR/bookings/internal/handlers/handlers.go:46.68,58.2 5 1
+github.com/chunkERR/bookings/internal/handlers/handlers.go:61.74,70.2 4 1
+github.com/chunkERR/bookings/internal/handlers/handlers.go:74.78,76.16 2 1
+github.com/chunkERR/bookings/internal/handlers/handlers.go:76.16,79.3 2 0
+github.com/chunkERR/bookings/internal/handlers/handlers.go:81.2,96.19 6 1
+github.com/chunkERR/bookings/internal/handlers/handlers.go:96.19,105.3 4 0
+github.com/chunkERR/bookings/internal/handlers/handlers.go:107.2,108.66 2 1
+github.com/chunkERR/bookings/internal/handlers/handlers.go:112.71,114.2 1 1
+github.com/chunkERR/bookings/internal/handlers/handlers.go:117.69,119.2 1 1
+github.com/chunkERR/bookings/internal/handlers/handlers.go:122.75,124.2 1 1
+github.com/chunkERR/bookings/internal/handlers/handlers.go:127.79,132.2 3 1
+github.com/chunkERR/bookings/internal/handlers/handlers.go:140.79,147.16 3 0
+github.com/chunkERR/bookings/internal/handlers/handlers.go:147.16,149.3 1 0
+github.com/chunkERR/bookings/internal/handlers/handlers.go:151.2,152.14 2 0
+github.com/chunkERR/bookings/internal/handlers/handlers.go:157.70,159.2 1 1
+github.com/chunkERR/bookings/internal/handlers/handlers.go:161.81,163.9 2 1
+github.com/chunkERR/bookings/internal/handlers/handlers.go:163.9,168.3 4 1
+github.com/chunkERR/bookings/internal/handlers/handlers.go:170.2,176.4 4 0
